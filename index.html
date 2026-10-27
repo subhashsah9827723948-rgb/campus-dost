@@ -1,0 +1,313 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Campus Dost - Learn, practise and prepare for your future.">
+<title>Campus Dost | Learn & Grow</title>
+<style>
+:root {
+  --blue: #2447d8;
+  --dark: #14213d;
+  --light: #f4f7ff;
+  --white: #ffffff;
+  --muted: #64748b;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  background: var(--light);
+  color: var(--dark);
+}
+header {
+  background: linear-gradient(135deg, #17358f, #536dfe);
+  color: white;
+  padding: 22px 18px 32px;
+}
+nav {
+  max-width: 1050px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.logo { font-size: 23px; font-weight: 800; }
+nav a { color: white; text-decoration: none; font-size: 14px; }
+.hero {
+  max-width: 1050px;
+  margin: 40px auto 0;
+}
+.hero h1 {
+  font-size: clamp(32px, 7vw, 54px);
+  line-height: 1.12;
+  margin: 0 0 15px;
+}
+.hero p { max-width: 550px; line-height: 1.7; }
+main { max-width: 1050px; margin: 25px auto; padding: 0 16px; }
+.section-title { font-size: 25px; margin: 28px 0 15px; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+.card {
+  background: var(--white);
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 17px;
+  box-shadow: 0 5px 18px #14213d0a;
+}
+.card h3 { margin-top: 8px; }
+.card p { color: var(--muted); line-height: 1.6; }
+.emoji { font-size: 31px; }
+button, select, input {
+  width: 100%;
+  padding: 13px;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-top: 9px;
+}
+button {
+  background: var(--blue);
+  color: white;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+button:hover { opacity: .9; }
+select, input { border: 1px solid #cbd5e1; background: white; }
+label { display: block; margin-top: 12px; font-weight: 600; }
+.notice {
+  background: #eef2ff;
+  padding: 14px;
+  border-radius: 10px;
+  line-height: 1.6;
+  color: #273c94;
+}
+#question { font-weight: 700; line-height: 1.6; }
+.option {
+  background: white;
+  color: var(--dark);
+  border: 1px solid #cbd5e1;
+  text-align: left;
+}
+#message { line-height: 1.6; font-weight: 600; }
+.small { color: var(--muted); font-size: 13px; line-height: 1.6; }
+footer {
+  text-align: center;
+  background: #14213d;
+  color: white;
+  padding: 25px 16px;
+  margin-top: 35px;
+  line-height: 1.8;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">🎓 Campus Dost</div>
+    <a href="#exams">Explore Exams ↓</a>
+  </nav>
+  <div class="hero">
+    <p>YOUR LEARNING PARTNER</p>
+    <h1>Learn Today.<br>Lead Tomorrow.</h1>
+    <p>Explore subjects, practise questions and prepare for your next big opportunity — all in one place.</p>
+    <a href="#learning"><button style="max-width:220px;background:white;color:#2447d8">Explore Learning →</button></a>
+  </div>
+</header>
+
+<main>
+  <section id="learning">
+    <h2 class="section-title">Explore Learning 📚</h2>
+    <div class="grid">
+      <article class="card">
+        <div class="emoji">🏫</div>
+        <h3>School Studies</h3>
+        <p>Build your foundations with subject-wise learning and practice.</p>
+      </article>
+      <article class="card">
+        <div class="emoji">🎓</div>
+        <h3>College</h3>
+        <p>Explore academic concepts, revision and study resources.</p>
+      </article>
+      <article class="card">
+        <div class="emoji">🩺</div>
+        <h3>Medical Entrance</h3>
+        <p>Practise science questions and prepare for entrance exams.</p>
+      </article>
+      <article class="card">
+        <div class="emoji">🇳🇵</div>
+        <h3>Nepal Loksewa</h3>
+        <p>Prepare with general knowledge and practice questions.</p>
+      </article>
+      <article class="card">
+        <div class="emoji">📝</div>
+        <h3>Other Entrance Exams</h3>
+        <p>Make practice part of your exam preparation routine.</p>
+      </article>
+      <article class="card">
+        <div class="emoji">💻</div>
+        <h3>Skills & Career</h3>
+        <p>Discover technology, communication and career skills.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="exams">
+    <h2 class="section-title">Saturday Exam 🏆</h2>
+    <div class="card">
+      <p>Choose a category and try a free demonstration quiz.</p>
+      <label for="category">Select your exam category</label>
+      <select id="category">
+        <option>School</option>
+        <option>College</option>
+        <option>Medical Entrance</option>
+        <option>Nepal Loksewa</option>
+        <option>Other Entrance Exams</option>
+      </select>
+      <div class="notice" style="margin-top:15px">
+        <strong>Planned exam fee: NPR 20 per attempt</strong><br>
+        This demo does not collect payments. Real paid exams will be enabled only after secure payment verification is set up.
+      </div>
+      <button onclick="startQuiz()">Start Demo Quiz</button>
+      <div id="quiz" hidden>
+        <p id="progress" class="small"></p>
+        <p id="question"></p>
+        <div id="answers"></div>
+        <p id="message" aria-live="polite"></p>
+        <button id="next" onclick="nextQuestion()" hidden>Next Question →</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="account">
+    <h2 class="section-title">Student Account 🔐</h2>
+    <div class="card">
+      <p>Student accounts are part of the planned platform.</p>
+      <p class="notice">Secure sign-up, verified email or phone OTP, saved results and admin controls require a backend. They are not active in this demo.</p>
+    </div>
+  </section>
+
+  <section id="language">
+    <h2 class="section-title">Choose Language 🌐</h2>
+    <div class="card">
+      <select id="lang" onchange="setLanguage()">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="ne">नेपाली</option>
+      </select>
+      <p id="langMessage">Welcome to Campus Dost — your learning partner!</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Our Promise 💙</h2>
+    <div class="card">
+      <p>We aim to make learning accessible, useful and easy to navigate. More study materials and verified exam features will be added as the platform develops.</p>
+      <p class="small">This is an early demo. Learning resources, user accounts, exam payments and result history are not connected to a live service yet.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <strong>🎓 Campus Dost</strong><br>
+  Learn Today. Lead Tomorrow.<br>
+  <span class="small" style="color:#cbd5e1">© 2026 Campus Dost · Learning for everyone</span>
+</footer>
+
+<script>
+const questions = [
+  {
+    q: "Which planet is known as the Red Planet?",
+    a: ["Earth", "Mars", "Venus", "Jupiter"],
+    correct: 1
+  },
+  {
+    q: "What is 12 × 8?",
+    a: ["86", "92", "96", "108"],
+    correct: 2
+  },
+  {
+    q: "Which gas do plants absorb from the atmosphere?",
+    a: ["Oxygen", "Nitrogen", "Carbon dioxide", "Hydrogen"],
+    correct: 2
+  }
+];
+
+let current = 0;
+let score = 0;
+let answered = false;
+
+function startQuiz() {
+  current = 0;
+  score = 0;
+  document.getElementById("quiz").hidden = false;
+  showQuestion();
+}
+
+function showQuestion() {
+  answered = false;
+  const q = questions[current];
+  document.getElementById("progress").textContent =
+    "Question " + (current + 1) + " of " + questions.length;
+  document.getElementById("question").textContent = q.q;
+  document.getElementById("message").textContent = "";
+  document.getElementById("next").hidden = true;
+  const answers = document.getElementById("answers");
+  answers.replaceChildren();
+
+  q.a.forEach((answer, i) => {
+    const btn = document.createElement("button");
+    btn.className = "option";
+    btn.textContent = answer;
+    btn.onclick = () => chooseAnswer(i);
+    answers.appendChild(btn);
+  });
+}
+
+function chooseAnswer(index) {
+  if (answered) return;
+  answered = true;
+  if (index === questions[current].correct) {
+    score++;
+    document.getElementById("message").textContent = "Correct! 🎉";
+  } else {
+    document.getElementById("message").textContent =
+      "Not quite. Correct answer: " +
+      questions[current].a[questions[current].correct];
+  }
+  document.getElementById("next").hidden = false;
+}
+
+function nextQuestion() {
+  current++;
+  if (current < questions.length) {
+    showQuestion();
+  } else {
+    document.getElementById("progress").textContent = "Demo completed!";
+    document.getElementById("question").textContent =
+      "Your score: " + score + " / " + questions.length;
+    document.getElementById("answers").replaceChildren();
+    document.getElementById("message").textContent =
+      "Thanks for practising with Campus Dost!";
+    document.getElementById("next").hidden = true;
+  }
+}
+
+function setLanguage() {
+  const lang = document.getElementById("lang").value;
+  const messages = {
+    en: "Welcome to Campus Dost — your learning partner!",
+    hi: "Campus Dost में आपका स्वागत है — आपका पढ़ाई का साथी!",
+    ne: "Campus Dost मा स्वागत छ — तपाईंको अध्ययन साथी!"
+  };
+  document.getElementById("langMessage").textContent = messages[lang];
+}
+</script>
+</body>
+</html>
