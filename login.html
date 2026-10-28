@@ -154,20 +154,104 @@
 
     <footer>© 2026 Campus Dost</footer>
   </main>
+  
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js";
+  import {
+    getAuth,
+    RecaptchaVerifier,
+    signInWithPhoneNumber
+  } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js";
 
-  <script>
-    document.getElementById("loginForm").addEventListener(
-      "submit",
-      function(event) {
-        event.preventDefault();
+  const firebaseConfig = {
+    apiKey: "AIzaSyAmcYOusLj-QtEHWixUtX6quh3XDs6EvKQ",
+    authDomain: "campus-dost-eebfe.firebaseapp.com",
+    projectId: "campus-dost-eebfe",
+    storageBucket: "campus-dost-eebfe.firebasestorage.app",
+    messagingSenderId: "26710716148",
+    appId: "1:26710716148:web:5a9aff8b5d41c9f63078a1",
+    measurementId: "G-7XZTZMZJE3"
+  };
 
-        const message = document.getElementById("message");
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const form = document.getElementById("loginForm");
+  const message = document.getElementById("message");
 
-        message.textContent =
-          "Login page is ready. Real OTP verification " +
-          "will be available after backend setup.";
+  let confirmation = null;
+  let recaptcha = null;
+
+  const captchaBox = document.createElement("div");
+  captchaBox.id = "recaptcha-container";
+  form.appendChild(captchaBox);
+
+  const otpInput = document.createElement("input");
+  otpInput.placeholder = "Enter 6-digit OTP";
+  otpInput.inputMode = "numeric";
+  otpInput.maxLength = 6;
+  otpInput.style.display = "none";
+  form.appendChild(otpInput);
+
+  const verifyButton = document.createElement("button");
+  verifyButton.type = "button";
+  verifyButton.textContent = "Verify OTP";
+  verifyButton.style.display = "none";
+  form.appendChild(verifyButton);
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const phone = document.getElementById("phone").value.trim();
+
+    if (!/^\+[1-9]\d{7,14}$/.test(phone)) {
+      message.textContent =
+        "Enter your phone with country code, e.g. +977XXXXXXXXXX";
+      return;
+    }
+
+    try {
+      message.textContent = "Preparing verification...";
+
+      if (!recaptcha) {
+        recaptcha = new RecaptchaVerifier(auth, "recaptcha-container", {
+          size: "normal"
+        });
       }
-    );
-  </script>
+
+      await recaptcha.render();
+      message.textContent = "Sending OTP...";
+
+      confirmation = await signInWithPhoneNumber(auth, phone, recaptcha);
+      otpInput.style.display = "block";
+      verifyButton.style.display = "block";
+      message.textContent = "OTP sent. Check your SMS.";
+    } catch (error) {
+      console.error(error);
+      message.textContent = "OTP could not be sent. Check Firebase settings.";
+      if (recaptcha) {
+        recaptcha.clear();
+        recaptcha = null;
+      }
+    }
+  });
+
+  verifyButton.addEventListener("click", async () => {
+    if (!confirmation || !/^\d{6}$/.test(otpInput.value.trim())) {
+      message.textContent = "Enter the 6-digit OTP.";
+      return;
+    }
+
+    try {
+      const result = await confirmation.confirm(otpInput.value.trim());
+      message.textContent = "Phone verified successfully!";
+      console.log("User ID:", result.user.uid);
+    } catch (error) {
+      console.error(error);
+      message.textContent = "OTP verification failed. Try again.";
+    }
+  });
+</script>
+
+
+  
 </body>
 </html>
