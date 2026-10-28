@@ -250,3 +250,228 @@ function backHome(){
 </script>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Campus Dost</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f1f5fb;color:#17243a}
+header{background:#12315a;color:white;padding:25px 15px;text-align:center}
+header h1{margin:0;font-size:30px}
+main{max-width:800px;margin:20px auto;padding:0 12px}
+.card{background:white;padding:18px;border-radius:14px;margin-bottom:15px;box-shadow:0 3px 14px #0000000d}
+label{display:block;font-weight:bold;margin:12px 0 6px}
+select,button{font:inherit;padding:12px;border-radius:9px}
+select{width:100%;border:1px solid #ccd5e2;background:white}
+button{border:0;font-weight:bold;cursor:pointer}
+.primary{background:#2563eb;color:white}
+.secondary{background:#e6edfa;color:#183b70}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.actions button{flex:1}
+.hidden{display:none}
+.top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-weight:bold}
+#clock{color:#c62828}
+#question{font-size:20px;line-height:1.5}
+.option{display:flex;gap:10px;padding:13px;border:1px solid #d5deeb;border-radius:9px;margin:9px 0;cursor:pointer}
+.option:has(input:checked){background:#edf4ff;border-color:#2563eb}
+.option input{margin-top:4px}
+#palette{display:flex;gap:7px;flex-wrap:wrap}
+#palette button{width:40px;background:#e7edf7;padding:10px 0}
+#palette .current{background:#2563eb;color:white}
+#palette .done{border:2px solid #15803d}
+.bar{height:7px;background:#e5eaf2;margin:14px 0}
+#fill{height:7px;background:#2563eb;width:0}
+.score{font-size:38px;color:#2563eb;font-weight:bold}
+.review-item{border-bottom:1px solid #ddd;padding:12px 0;line-height:1.5}
+.small{font-size:13px;color:#65738a;line-height:1.5}
+footer{text-align:center;padding:20px;color:#68758a}
+</style>
+</head>
+<body>
+<header>
+<h1>🎓 Campus Dost</h1>
+<p>Entrance Preparation • Practice • Results</p>
+</header>
+<main>
+<section class="card" id="setup">
+<h2>Start Your Exam</h2>
+<label for="exam">Exam</label>
+<select id="exam">
+<option value="CEE">Nepal CEE</option>
+<option value="HA">HA Practice</option>
+<option value="CMLT">CMLT Practice</option>
+</select>
+<label for="course">Programme</label>
+<select id="course">
+<option>MBBS</option><option>BDS</option><option>BSc Nursing</option>
+<option>BAMS</option><option>BPH</option><option>BPharm</option>
+<option>BPT</option><option>BSc MLT</option><option>BSc MIT</option>
+</select>
+<label for="subject">Subject</label>
+<select id="subject">
+<option>All</option><option>Physics</option><option>Chemistry</option>
+<option>Biology</option><option>Health</option>
+</select>
+<label for="duration">Time limit</label>
+<select id="duration">
+<option value="5">5 minutes</option>
+<option value="10" selected>10 minutes</option>
+<option value="20">20 minutes</option>
+</select>
+<div class="actions"><button class="primary" id="start">Start Exam →</button></div>
+<p class="small">Original sample questions for practice. Not official exam questions.</p>
+</section>
+
+<section class="card hidden" id="test">
+<div class="top"><span id="examName"></span><span>⏱ <span id="clock">10:00</span></span></div>
+<div class="bar"><div id="fill"></div></div>
+<div class="top"><span id="count"></span><span id="answered"></span></div>
+<h2 id="question"></h2>
+<div id="options"></div>
+<div class="actions">
+<button class="secondary" id="prev">← Previous</button>
+<button class="primary" id="next">Next →</button>
+</div>
+<h3>Questions</h3>
+<div id="palette"></div>
+<div class="actions"><button class="primary" id="submit">Submit Exam</button></div>
+</section>
+
+<section class="card hidden" id="result">
+<h2>Exam Result</h2>
+<div class="score" id="score"></div>
+<p id="summary"></p>
+<p id="counts"></p>
+<div class="actions">
+<button class="primary" id="showReview">Review Answers</button>
+<button class="secondary" id="again">Try Again</button>
+</div>
+<div id="review" class="hidden"></div>
+</section>
+</main>
+<footer>Campus Dost — Learn, Practise, Improve</footer>
+
+<script>
+const data={
+CEE:[
+["Physics","What is the SI unit of force?",["Joule","Newton","Watt","Pascal"],1,"Force is measured in newtons."],
+["Physics","The SI unit of electric current is:",["Volt","Ohm","Ampere","Watt"],2,"Current is measured in amperes."],
+["Physics","Approximate acceleration due to gravity on Earth?",["4.9","9.8","15","20"],1,"Approximately 9.8 m/s²."],
+["Physics","Which lens corrects myopia?",["Convex","Concave","Plane","None"],1,"A concave lens helps correct myopia."],
+["Physics","Power is measured in:",["Joule","Watt","Newton","Pascal"],1,"Watt is the SI unit of power."],
+["Chemistry","Chemical symbol of sodium?",["S","So","Na","N"],2,"Na comes from natrium."],
+["Chemistry","A solution with pH 3 is:",["Acidic","Neutral","Basic","None"],0,"A pH below 7 is acidic."],
+["Chemistry","Covalent bonds involve:",["Sharing electrons","Sharing protons","Sharing neutrons","None"],0,"Covalent bonds involve shared electron pairs."],
+["Chemistry","Atomic number equals the number of:",["Neutrons","Protons","Shells","Molecules"],1,"Atomic number is the number of protons."],
+["Chemistry","One mole contains approximately:",["6.022×10²³ entities","100 entities","1000 entities","10 entities"],0,"This is Avogadro's constant."],
+["Biology","Main site of aerobic respiration?",["Ribosome","Mitochondrion","Golgi body","Lysosome"],1,"Mitochondria are a major site of aerobic respiration."],
+["Biology","Which blood cells transport oxygen?",["Platelets","Red blood cells","White blood cells","None"],1,"Haemoglobin transports oxygen."],
+["Biology","Functional unit of the kidney?",["Neuron","Nephron","Alveolus","Villus"],1,"The nephron filters blood and forms urine."],
+["Biology","Photosynthesis mainly occurs in:",["Nucleus","Chloroplast","Mitochondrion","Ribosome"],1,"Chloroplasts contain chlorophyll."],
+["Biology","Hereditary information is stored mainly in:",["DNA","Starch","Cellulose","Fat"],0,"DNA stores genetic information."],
+["Biology","Which organ produces insulin?",["Liver","Pancreas","Spleen","Lung"],1,"Pancreatic beta cells produce insulin."],
+["Biology","How many chambers are in the human heart?",["Two","Three","Four","Five"],2,"The heart has four chambers."],
+["Biology","Which vitamin helps blood clotting?",["A","C","K","E"],2,"Vitamin K supports clotting-factor production."],
+["Biology","Which molecule carries oxygen in red blood cells?",["Insulin","Haemoglobin","Keratin","Collagen"],1,"Haemoglobin binds and transports oxygen."],
+["Biology","Which organ is primarily responsible for gas exchange?",["Lung","Stomach","Kidney","Pancreas"],0,"Gas exchange occurs in the lung alveoli."]
+],
+HA:[
+["Health","Which organ pumps blood?",["Liver","Heart","Kidney","Lung"],1,"The heart pumps blood."],
+["Health","ORS helps manage:",["Dehydration","Fractures","Vision loss","Hearing loss"],0,"ORS replaces water and electrolytes."],
+["Health","Which instrument measures blood pressure?",["Thermometer","Sphygmomanometer","Glucometer","Scale"],1,"A sphygmomanometer measures blood pressure."],
+["Health","Which vitamin is associated with normal blood clotting?",["A","C","K","D"],2,"Vitamin K is needed for several clotting factors."],
+["Health","Which practice helps prevent infection?",["Hand hygiene","Sharing needles","Reusing gloves","Skipping cleaning"],0,"Hand hygiene reduces transmission of infection."],
+["Health","Which organ produces insulin?",["Liver","Pancreas","Lung","Spleen"],1,"Pancreatic beta cells produce insulin."],
+["Health","Malaria is caused by:",["Plasmodium","Salmonella","Influenza virus","Fungus"],0,"Malaria is caused by Plasmodium parasites."],
+["Health","PPE means:",["Personal Protective Equipment","Patient Prevention Exam","Primary Public Evaluation","None"],0,"PPE means personal protective equipment."],
+["Health","Which nutrient supports tissue growth and repair?",["Protein","Salt","Water only","None"],0,"Protein provides amino acids for tissue repair."],
+["Health","A thermometer measures:",["Temperature","Blood pressure","Height","Pulse only"],0,"A thermometer measures temperature."]
+],
+CMLT:[
+["Health","Common anticoagulant for a CBC sample?",["EDTA","Water","Alcohol","Glucose"],0,"EDTA is commonly used for CBC samples."],
+["Health","Which instrument magnifies cells?",["Microscope","Centrifuge","Autoclave","Incubator"],0,"A microscope magnifies cells."],
+["Health","Centrifugation separates components mainly by:",["Density and sedimentation","Colour only","Smell","Temperature"],0,"Centrifugation separates components using centrifugal force."],
+["Health","Which is the primary stain in Gram staining?",["Crystal violet","Eosin","Water","Alcohol"],0,"Crystal violet is the primary Gram stain."],
+["Health","CBC stands for:",["Complete Blood Count","Cell Balance Check","Common Bacterial Culture","Central Blood Chemistry"],0,"CBC means complete blood count."],
+["Health","An autoclave commonly uses:",["Pressurised steam","Dry paper","Cold water only","Sunlight"],0,"An autoclave uses pressurised steam."],
+["Health","Routine urinalysis uses which specimen?",["Urine","Hair","Nail","Saliva only"],0,"Urine is used for routine urinalysis."],
+["Health","Which test measures blood glucose?",["Blood glucose test","Gram stain","Blood grouping only","ESR only"],0,"It measures glucose concentration in blood."],
+["Health","Why label specimens carefully?",["Correct identification","Change results","Increase volume","Sterilise them"],0,"Labelling helps prevent specimen mix-ups."],
+["Health","Which cells contain haemoglobin?",["Red blood cells","Platelets","Most bacteria","None"],0,"Red blood cells contain haemoglobin."]
+]
+};
+let qs=[],answers=[],pos=0,seconds=600,interval=null,finished=false;
+const $=id=>document.getElementById(id);
+function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function start(){
+clearInterval(interval);let type=$("exam").value;
+let pool=data[type];
+if(type==="CEE"&&$("subject").value!=="All")pool=pool.filter(q=>q[0]===$("subject").value);
+if(!pool.length){alert("No questions available.");return}
+qs=shuffle(pool);answers=Array(qs.length).fill(null);pos=0;finished=false;
+seconds=Number($("duration").value)*60;
+$("setup").classList.add("hidden");$("result").classList.add("hidden");$("test").classList.remove("hidden");
+$("examName").textContent=type==="CEE"?"CEE • "+$("course").value:type+" Practice";
+$("review").classList.add("hidden");render();tick();
+interval=setInterval(()=>{seconds--;tick();if(seconds<=0)finish(true)},1000);
+}
+function tick(){$("clock").textContent=String(Math.floor(seconds/60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0")}
+function render(){
+let q=qs[pos];$("count").textContent=`Question ${pos+1} of ${qs.length}`;
+$("fill").style.width=((pos+1)/qs.length*100)+"%";
+$("question").textContent=q[1];$("options").innerHTML="";
+q[2].forEach((v,i)=>{
+let l=document.createElement("label");l.className="option";
+let r=document.createElement("input");r.type="radio";r.name="answer";r.checked=answers[pos]===i;
+r.addEventListener("change",()=>{answers[pos]=i;renderPalette();update()});
+let t=document.createElement("span");t.textContent=String.fromCharCode(65+i)+". "+v;
+l.append(r,t);$("options").append(l);
+});
+$("prev").disabled=pos===0;$("next").disabled=pos===qs.length-1;
+renderPalette();update();
+}
+function update(){$("answered").textContent="Answered: "+answers.filter(x=>x!==null).length}
+function renderPalette(){
+$("palette").innerHTML="";
+qs.forEach((q,i)=>{let b=document.createElement("button");b.textContent=i+1;
+if(i===pos)b.classList.add("current");if(answers[i]!==null)b.classList.add("done");
+b.onclick=()=>{pos=i;render()};$("palette").append(b)});
+}
+function finish(auto=false){
+if(finished)return;
+if(!auto&&!confirm("Submit your exam now?"))return;
+finished=true;clearInterval(interval);
+$("test").classList.add("hidden");$("result").classList.remove("hidden");
+let right=0,wrong=0,skip=0;
+qs.forEach((q,i)=>{if(answers[i]===null)skip++;else if(answers[i]===q[3])right++;else wrong++});
+let pct=Math.round(right/qs.length*100);
+$("score").textContent=pct+"%";
+$("summary").textContent=auto?"Time is over. Your exam has been submitted.":"Exam submitted successfully!";
+$("counts").textContent=`Correct: ${right} | Wrong: ${wrong} | Unanswered: ${skip} | Total: ${qs.length}`;
+$("review").innerHTML="";
+qs.forEach((q,i)=>{
+let d=document.createElement("div");d.className="review-item";
+let status=answers[i]===null?"Not answered":answers[i]===q[3]?"Correct":"Incorrect";
+d.innerHTML="<strong>Q"+(i+1)+". "+escapeHTML(q[1])+"</strong><br>"+
+"Your answer: "+escapeHTML(answers[i]===null?"Not answered":q[2][answers[i]])+"<br>"+
+"Correct answer: <strong>"+escapeHTML(q[2][q[3]])+"</strong><br>"+
+"<span style='color:#52647e'>Explanation: "+escapeHTML(q[4])+"</span><br><b>"+status+"</b>";
+$("review").append(d);
+});
+}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+$("start").onclick=start;
+$("prev").onclick=()=>{if(pos>0){pos--;render()}};
+$("next").onclick=()=>{if(pos<qs.length-1){pos++;render()}};
+$("submit").onclick=()=>finish(false);
+$("showReview").onclick=()=>$("review").classList.toggle("hidden");
+$("again").onclick=()=>{$("result").classList.add("hidden");$("setup").classList.remove("hidden");$("review").classList.add("hidden")};
+$("exam").onchange=()=>{$("subject").disabled=$("exam").value!=="CEE";$("course").disabled=$("exam").value!=="CEE"};
+$("exam").dispatchEvent(new Event("change"));
+</script>
+</body>
+</html>
