@@ -4,309 +4,248 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Campus Dost - Learn, practise and prepare for your future.">
-<title>Campus Dost | Learn & Grow</title>
+<meta name="theme-color" content="#102a43">
+<title>Campus Dost | Nepal CEE Preparation</title>
 <style>
-:root {
-  --blue: #2447d8;
-  --dark: #14213d;
-  --light: #f4f7ff;
-  --white: #ffffff;
-  --muted: #64748b;
-}
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-  background: var(--light);
-  color: var(--dark);
-}
-header {
-  background: linear-gradient(135deg, #17358f, #536dfe);
-  color: white;
-  padding: 22px 18px 32px;
-}
-nav {
-  max-width: 1050px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-}
-.logo { font-size: 23px; font-weight: 800; }
-nav a { color: white; text-decoration: none; font-size: 14px; }
-.hero {
-  max-width: 1050px;
-  margin: 40px auto 0;
-}
-.hero h1 {
-  font-size: clamp(32px, 7vw, 54px);
-  line-height: 1.12;
-  margin: 0 0 15px;
-}
-.hero p { max-width: 550px; line-height: 1.7; }
-main { max-width: 1050px; margin: 25px auto; padding: 0 16px; }
-.section-title { font-size: 25px; margin: 28px 0 15px; }
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 15px;
-}
-.card {
-  background: var(--white);
-  padding: 20px;
-  border: 1px solid #e2e8f0;
-  border-radius: 17px;
-  box-shadow: 0 5px 18px #14213d0a;
-}
-.card h3 { margin-top: 8px; }
-.card p { color: var(--muted); line-height: 1.6; }
-.emoji { font-size: 31px; }
-button, select, input {
-  width: 100%;
-  padding: 13px;
-  border-radius: 10px;
-  font-size: 16px;
-  margin-top: 9px;
-}
-button {
-  background: var(--blue);
-  color: white;
-  border: none;
-  font-weight: 700;
-  cursor: pointer;
-}
-button:hover { opacity: .9; }
-select, input { border: 1px solid #cbd5e1; background: white; }
-label { display: block; margin-top: 12px; font-weight: 600; }
-.notice {
-  background: #eef2ff;
-  padding: 14px;
-  border-radius: 10px;
-  line-height: 1.6;
-  color: #273c94;
-}
-#question { font-weight: 700; line-height: 1.6; }
-.option {
-  background: white;
-  color: var(--dark);
-  border: 1px solid #cbd5e1;
-  text-align: left;
-}
-#message { line-height: 1.6; font-weight: 600; }
-.small { color: var(--muted); font-size: 13px; line-height: 1.6; }
-footer {
-  text-align: center;
-  background: #14213d;
-  color: white;
-  padding: 25px 16px;
-  margin-top: 35px;
-  line-height: 1.8;
-}
+:root{--navy:#102a43;--blue:#1769e0;--bg:#f3f6fb;--green:#14804a;--red:#c73535}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#172b4d;font-family:system-ui,-apple-system,sans-serif}
+header{background:var(--navy);color:white;padding:24px 18px}
+.wrap{max-width:950px;margin:auto}
+.brand{font-size:26px;font-weight:800}
+header p{color:#d7e5f5;margin:7px 0 0}
+main{max-width:950px;margin:22px auto;padding:0 14px}
+.card{background:white;border:1px solid #e0e7f0;border-radius:16px;padding:20px;margin-bottom:16px;box-shadow:0 4px 18px #102a4308}
+h1,h2,h3{margin-top:0}
+label{display:block;font-weight:650;margin:14px 0 7px}
+select,button{font:inherit}
+select{width:100%;padding:13px;border:1px solid #ccd6e2;border-radius:10px;background:white}
+button{border:0;border-radius:10px;padding:12px 16px;cursor:pointer;font-weight:700}
+.primary{background:var(--blue);color:white}
+.secondary{background:#eaf1fc;color:#174c96}
+button:disabled{opacity:.5;cursor:not-allowed}
+button:focus-visible,select:focus-visible{outline:3px solid #8bb8ff;outline-offset:2px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.tile{background:#f3f7ff;padding:14px;border-radius:12px}
+.muted{color:#61738b;font-size:14px;line-height:1.6}
+.notice{background:#fff8e6;border:1px solid #f3dfa5;padding:12px;border-radius:10px;font-size:14px}
+.hidden{display:none!important}
+.examtop{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.timer{font-size:20px;font-weight:800;color:#b42318}
+.progress{height:7px;background:#e4eaf2;border-radius:10px;overflow:hidden;margin:14px 0}
+.progress div{height:100%;background:var(--blue);width:0}
+.options{display:grid;gap:10px;margin:18px 0}
+.option{width:100%;text-align:left;border:1px solid #d8e0eb;background:white;color:#172b4d;padding:14px}
+.option.selected{border:2px solid var(--blue);background:#eef5ff}
+.palette{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.palette button{padding:9px 12px;background:#edf1f6;color:#33445c}
+.palette button.done{background:#d9f5e4;color:#12623a}
+.palette button.current{outline:2px solid var(--blue)}
+.actions{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-top:18px}
+.actions button{flex:1}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.stat{background:#f3f6fb;padding:16px;border-radius:12px}
+.stat strong{display:block;font-size:25px;margin-top:4px}
+.review{border-top:1px solid #e0e7f0;padding:14px 0}
+.correct{color:var(--green);font-weight:700}
+.wrong{color:var(--red);font-weight:700}
+footer{text-align:center;padding:24px;color:#61738b;font-size:13px}
+@media(min-width:650px){.stats{grid-template-columns:repeat(4,minmax(0,1fr))}}
 </style>
 </head>
 <body>
-
 <header>
-  <nav>
-    <div class="logo">🎓 Campus Dost</div>
-    <a href="#exams">Explore Exams ↓</a>
-  </nav>
-  <div class="hero">
-    <p>YOUR LEARNING PARTNER</p>
-    <h1>Learn Today.<br>Lead Tomorrow.</h1>
-    <p>Explore subjects, practise questions and prepare for your next big opportunity — all in one place.</p>
-    <a href="#learning"><button style="max-width:220px;background:white;color:#2447d8">Explore Learning →</button></a>
+  <div class="wrap">
+    <div class="brand">🎓 Campus Dost</div>
+    <p>Nepal CEE Preparation · Learn, Practice, Succeed</p>
   </div>
 </header>
 
 <main>
-  <section id="learning">
-    <h2 class="section-title">Explore Learning 📚</h2>
-    <div class="grid">
-      <article class="card">
-        <div class="emoji">🏫</div>
-        <h3>School Studies</h3>
-        <p>Build your foundations with subject-wise learning and practice.</p>
-      </article>
-      <article class="card">
-        <div class="emoji">🎓</div>
-        <h3>College</h3>
-        <p>Explore academic concepts, revision and study resources.</p>
-      </article>
-      <article class="card">
-        <div class="emoji">🩺</div>
-        <h3>Medical Entrance</h3>
-        <p>Practise science questions and prepare for entrance exams.</p>
-      </article>
-      <article class="card">
-        <div class="emoji">🇳🇵</div>
-        <h3>Nepal Loksewa</h3>
-        <p>Prepare with general knowledge and practice questions.</p>
-      </article>
-      <article class="card">
-        <div class="emoji">📝</div>
-        <h3>Other Entrance Exams</h3>
-        <p>Make practice part of your exam preparation routine.</p>
-      </article>
-      <article class="card">
-        <div class="emoji">💻</div>
-        <h3>Skills & Career</h3>
-        <p>Discover technology, communication and career skills.</p>
-      </article>
-    </div>
-  </section>
+<section id="home" class="card">
+  <h1>Prepare for your entrance exam</h1>
+  <p class="muted">Choose your target program, practise MCQs and check your result immediately after submission.</p>
+  <label for="course">Select your target course</label>
+  <select id="course">
+    <option value="MBBS">MBBS</option>
+    <option value="BDS">BDS</option>
+    <option value="BSc Nursing">BSc Nursing</option>
+    <option value="BAMS">BAMS</option>
+    <option value="BPH">BPH — Public Health</option>
+    <option value="BPharm">BPharm — Pharmacy</option>
+    <option value="BPT">BPT — Physiotherapy</option>
+    <option value="BSc MLT">BSc MLT</option>
+    <option value="BSc MIT">BSc MIT</option>
+    <option value="Other">Other MEC-listed program</option>
+  </select>
+  <div class="grid" style="margin-top:18px">
+    <div class="tile"><strong>📚 MCQ Practice</strong><p class="muted">Try sample entrance questions.</p></div>
+    <div class="tile"><strong>⏱️ Timed Exam</strong><p class="muted">Answer and submit your test.</p></div>
+    <div class="tile"><strong>📊 Instant Result</strong><p class="muted">See marks and accuracy.</p></div>
+    <div class="tile"><strong>🔍 Answer Review</strong><p class="muted">Check correct answers and explanations.</p></div>
+  </div>
+  <div class="notice" style="margin-top:16px">
+    <strong>Demo question bank:</strong> These are sample practice questions, not an official paper or a prediction of this year's exam. The current demo contains 10 questions and uses a 15-minute timer.
+  </div>
+  <button class="primary" style="width:100%;margin-top:18px" onclick="startExam()">Start Practice Exam →</button>
+  <p class="muted">For the real exam, question distribution, syllabus and marking rules must match the selected program's current official MEC notice.</p>
+</section>
 
-  <section id="exams">
-    <h2 class="section-title">Saturday Exam 🏆</h2>
-    <div class="card">
-      <p>Choose a category and try a free demonstration quiz.</p>
-      <label for="category">Select your exam category</label>
-      <select id="category">
-        <option>School</option>
-        <option>College</option>
-        <option>Medical Entrance</option>
-        <option>Nepal Loksewa</option>
-        <option>Other Entrance Exams</option>
-      </select>
-      <div class="notice" style="margin-top:15px">
-        <strong>Planned exam fee: NPR 20 per attempt</strong><br>
-        This demo does not collect payments. Real paid exams will be enabled only after secure payment verification is set up.
-      </div>
-      <button onclick="startQuiz()">Start Demo Quiz</button>
-      <div id="quiz" hidden>
-        <p id="progress" class="small"></p>
-        <p id="question"></p>
-        <div id="answers"></div>
-        <p id="message" aria-live="polite"></p>
-        <button id="next" onclick="nextQuestion()" hidden>Next Question →</button>
-      </div>
+<section id="exam" class="card hidden">
+  <div class="examtop">
+    <div>
+      <div class="muted" id="examCourse"></div>
+      <h2 id="questionCount">Question 1 of 10</h2>
     </div>
-  </section>
+    <div class="timer" id="timer">15:00</div>
+  </div>
+  <div class="progress"><div id="progressBar"></div></div>
+  <div class="muted" id="subject"></div>
+  <h3 id="question"></h3>
+  <div class="options" id="options"></div>
+  <div class="palette" id="palette"></div>
+  <div class="actions">
+    <button class="secondary" id="prev" onclick="move(-1)">← Previous</button>
+    <button class="secondary" id="next" onclick="move(1)">Next →</button>
+    <button class="primary" onclick="submitExam(false)">Submit Exam</button>
+  </div>
+  <p class="muted">Choose one answer per question. Unanswered questions receive zero marks. You can navigate between questions before submitting.</p>
+</section>
 
-  <section id="account">
-    <h2 class="section-title">Student Account 🔐</h2>
-    <div class="card">
-      <p>Student accounts are part of the planned platform.</p>
-      <p class="notice">Secure sign-up, verified email or phone OTP, saved results and admin controls require a backend. They are not active in this demo.</p>
-    </div>
-  </section>
-
-  <section id="language">
-    <h2 class="section-title">Choose Language 🌐</h2>
-    <div class="card">
-      <select id="lang" onchange="setLanguage()">
-        <option value="en">English</option>
-        <option value="hi">हिन्दी</option>
-        <option value="ne">नेपाली</option>
-      </select>
-      <p id="langMessage">Welcome to Campus Dost — your learning partner!</p>
-    </div>
-  </section>
-
-  <section>
-    <h2 class="section-title">Our Promise 💙</h2>
-    <div class="card">
-      <p>We aim to make learning accessible, useful and easy to navigate. More study materials and verified exam features will be added as the platform develops.</p>
-      <p class="small">This is an early demo. Learning resources, user accounts, exam payments and result history are not connected to a live service yet.</p>
-    </div>
-  </section>
+<section id="results" class="card hidden">
+  <h1>📊 Your Exam Result</h1>
+  <p class="muted" id="resultCourse"></p>
+  <div class="stats">
+    <div class="stat">Final score<strong id="score">0</strong><span class="muted">out of 10</span></div>
+    <div class="stat">Correct<strong id="correct">0</strong></div>
+    <div class="stat">Incorrect<strong id="incorrect">0</strong></div>
+    <div class="stat">Unanswered<strong id="unanswered">0</strong></div>
+  </div>
+  <div class="card" style="margin-top:16px;margin-bottom:0">
+    <div class="examtop"><strong>Accuracy</strong><strong id="accuracy">0%</strong></div>
+    <div class="progress"><div id="accuracyBar"></div></div>
+    <p class="muted" id="feedback"></p>
+  </div>
+  <h2 style="margin-top:24px">Answer Review</h2>
+  <div id="review"></div>
+  <div class="actions">
+    <button class="primary" onclick="restart()">Try Again</button>
+    <button class="secondary" onclick="backHome()">Choose Another Course</button>
+  </div>
+</section>
 </main>
-
-<footer>
-  <strong>🎓 Campus Dost</strong><br>
-  Learn Today. Lead Tomorrow.<br>
-  <span class="small" style="color:#cbd5e1">© 2026 Campus Dost · Learning for everyone</span>
-</footer>
+<footer>Campus Dost · Nepal entrance exam practice · Demo version</footer>
 
 <script>
 const questions = [
-  {
-    q: "Which planet is known as the Red Planet?",
-    a: ["Earth", "Mars", "Venus", "Jupiter"],
-    correct: 1
-  },
-  {
-    q: "What is 12 × 8?",
-    a: ["86", "92", "96", "108"],
-    correct: 2
-  },
-  {
-    q: "Which gas do plants absorb from the atmosphere?",
-    a: ["Oxygen", "Nitrogen", "Carbon dioxide", "Hydrogen"],
-    correct: 2
-  }
+ {s:"Physics",q:"What is the SI unit of force?",o:["Joule","Newton","Watt","Pascal"],a:1,e:"Force is measured in newtons (N)."},
+ {s:"Physics",q:"Which quantity is a scalar?",o:["Velocity","Force","Displacement","Speed"],a:3,e:"Speed has magnitude only, so it is a scalar."},
+ {s:"Physics",q:"The SI unit of electric current is:",o:["Volt","Ohm","Ampere","Coulomb"],a:2,e:"Electric current is measured in amperes (A)."},
+ {s:"Chemistry",q:"The atomic number of an element equals the number of:",o:["Neutrons","Protons","Shells","Isotopes"],a:1,e:"Atomic number is the number of protons in the nucleus."},
+ {s:"Chemistry",q:"A solution with pH 3 is:",o:["Acidic","Neutral","Basic","Always a salt"],a:0,e:"A pH below 7 indicates an acidic solution."},
+ {s:"Chemistry",q:"Which bond involves sharing electron pairs?",o:["Ionic","Covalent","Metallic only","Hydrogen only"],a:1,e:"Covalent bonds form when atoms share electron pairs."},
+ {s:"Botany",q:"Which organelle is the main site of photosynthesis?",o:["Mitochondrion","Nucleus","Chloroplast","Ribosome"],a:2,e:"Chloroplasts contain chlorophyll and carry out photosynthesis."},
+ {s:"Botany",q:"Which tissue transports water in vascular plants?",o:["Phloem","Xylem","Epidermis","Cortex only"],a:1,e:"Xylem conducts water and mineral ions from the roots."},
+ {s:"Zoology",q:"Which blood cells mainly transport oxygen?",o:["Platelets","Red blood cells","White blood cells","Plasma proteins"],a:1,e:"Red blood cells contain haemoglobin, which carries oxygen."},
+ {s:"Mental Agility",q:"Find the next number: 2, 4, 8, 16, __",o:["18","24","30","32"],a:3,e:"Each number doubles, so the next number is 32."}
 ];
+let order=[],answers={},current=0,timeLeft=900,clock=null,submitted=false;
 
-let current = 0;
-let score = 0;
-let answered = false;
-
-function startQuiz() {
-  current = 0;
-  score = 0;
-  document.getElementById("quiz").hidden = false;
-  showQuestion();
+function startExam(){
+  clearInterval(clock);
+  order=questions.map((_,i)=>i);
+  answers={};current=0;timeLeft=900;submitted=false;
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("results").classList.add("hidden");
+  document.getElementById("exam").classList.remove("hidden");
+  document.getElementById("examCourse").textContent="Target: "+document.getElementById("course").value+" · Sample practice";
+  renderQuestion();renderPalette();updateTimer();
+  clock=setInterval(()=>{
+    timeLeft--;updateTimer();
+    if(timeLeft<=0)submitExam(true);
+  },1000);
 }
-
-function showQuestion() {
-  answered = false;
-  const q = questions[current];
-  document.getElementById("progress").textContent =
-    "Question " + (current + 1) + " of " + questions.length;
-  document.getElementById("question").textContent = q.q;
-  document.getElementById("message").textContent = "";
-  document.getElementById("next").hidden = true;
-  const answers = document.getElementById("answers");
-  answers.replaceChildren();
-
-  q.a.forEach((answer, i) => {
-    const btn = document.createElement("button");
-    btn.className = "option";
-    btn.textContent = answer;
-    btn.onclick = () => chooseAnswer(i);
-    answers.appendChild(btn);
+function updateTimer(){
+  const m=Math.floor(timeLeft/60),s=timeLeft%60;
+  document.getElementById("timer").textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
+}
+function renderQuestion(){
+  const q=questions[order[current]];
+  document.getElementById("questionCount").textContent="Question "+(current+1)+" of "+order.length;
+  document.getElementById("subject").textContent="Subject: "+q.s;
+  document.getElementById("question").textContent=q.q;
+  document.getElementById("progressBar").style.width=((current+1)/order.length*100)+"%";
+  const opts=document.getElementById("options");opts.innerHTML="";
+  q.o.forEach((option,i)=>{
+    const b=document.createElement("button");b.className="option"+(answers[order[current]]===i?" selected":"");
+    b.textContent=String.fromCharCode(65+i)+". "+option;
+    b.onclick=()=>{answers[order[current]]=i;renderQuestion();renderPalette();};
+    opts.appendChild(b);
+  });
+  document.getElementById("prev").disabled=current===0;
+  document.getElementById("next").disabled=current===order.length-1;
+}
+function renderPalette(){
+  const p=document.getElementById("palette");p.innerHTML="";
+  order.forEach((id,i)=>{
+    const b=document.createElement("button");
+    b.textContent=i+1;
+    if(answers[id]!==undefined)b.classList.add("done");
+    if(i===current)b.classList.add("current");
+    b.setAttribute("aria-label","Go to question "+(i+1));
+    b.onclick=()=>{current=i;renderQuestion();renderPalette();};
+    p.appendChild(b);
   });
 }
-
-function chooseAnswer(index) {
-  if (answered) return;
-  answered = true;
-  if (index === questions[current].correct) {
-    score++;
-    document.getElementById("message").textContent = "Correct! 🎉";
-  } else {
-    document.getElementById("message").textContent =
-      "Not quite. Correct answer: " +
-      questions[current].a[questions[current].correct];
-  }
-  document.getElementById("next").hidden = false;
+function move(n){
+  current=Math.max(0,Math.min(order.length-1,current+n));
+  renderQuestion();renderPalette();
 }
-
-function nextQuestion() {
-  current++;
-  if (current < questions.length) {
-    showQuestion();
-  } else {
-    document.getElementById("progress").textContent = "Demo completed!";
-    document.getElementById("question").textContent =
-      "Your score: " + score + " / " + questions.length;
-    document.getElementById("answers").replaceChildren();
-    document.getElementById("message").textContent =
-      "Thanks for practising with Campus Dost!";
-    document.getElementById("next").hidden = true;
-  }
+function submitExam(auto){
+  if(submitted)return;
+  const blank=order.filter(id=>answers[id]===undefined).length;
+  if(!auto&&!confirm("Submit your exam now? Unanswered questions: "+blank))return;
+  submitted=true;clearInterval(clock);
+  document.getElementById("exam").classList.add("hidden");
+  document.getElementById("results").classList.remove("hidden");
+  let right=0,wrong=0,unanswered=0;
+  order.forEach(id=>{
+    if(answers[id]===undefined)unanswered++;
+    else if(answers[id]===questions[id].a)right++;
+    else wrong++;
+  });
+  // Demo scoring: +1 correct, -0.25 incorrect, 0 unanswered.
+  const score=right-wrong*0.25;
+  const pct=right/order.length*100;
+  document.getElementById("resultCourse").textContent="Course: "+document.getElementById("course").value+" · "+(auto?"Time ended":"Submitted successfully");
+  document.getElementById("score").textContent=score.toFixed(2);
+  document.getElementById("correct").textContent=right;
+  document.getElementById("incorrect").textContent=wrong;
+  document.getElementById("unanswered").textContent=unanswered;
+  document.getElementById("accuracy").textContent=pct.toFixed(1)+"%";
+  document.getElementById("accuracyBar").style.width=pct+"%";
+  document.getElementById("feedback").textContent="This is a demo score based on 10 sample questions, not an official CEE result or admission prediction.";
+  const review=document.getElementById("review");review.innerHTML="";
+  order.forEach((id,i)=>{
+    const q=questions[id],chosen=answers[id];
+    const div=document.createElement("div");div.className="review";
+    const title=document.createElement("strong");title.textContent=(i+1)+". "+q.q;div.appendChild(title);
+    const status=document.createElement("p");
+    status.className=chosen===undefined?"muted":chosen===q.a?"correct":"wrong";
+    status.textContent=chosen===undefined?"Not answered":chosen===q.a?"Correct answer":"Your answer is incorrect";
+    div.appendChild(status);
+    const answer=document.createElement("p");answer.textContent="Correct answer: "+q.o[q.a];div.appendChild(answer);
+    const explanation=document.createElement("p");explanation.className="muted";explanation.textContent=q.e;div.appendChild(explanation);
+    review.appendChild(div);
+  });
+  window.scrollTo({top:0,behavior:"smooth"});
 }
-
-function setLanguage() {
-  const lang = document.getElementById("lang").value;
-  const messages = {
-    en: "Welcome to Campus Dost — your learning partner!",
-    hi: "Campus Dost में आपका स्वागत है — आपका पढ़ाई का साथी!",
-    ne: "Campus Dost मा स्वागत छ — तपाईंको अध्ययन साथी!"
-  };
-  document.getElementById("langMessage").textContent = messages[lang];
+function restart(){startExam();window.scrollTo({top:0,behavior:"smooth"});}
+function backHome(){
+  clearInterval(clock);
+  document.getElementById("results").classList.add("hidden");
+  document.getElementById("home").classList.remove("hidden");
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 </script>
 </body>
