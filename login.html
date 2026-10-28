@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Dost | Student Login</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #101b46, #176b87);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      color: #172033;
+    }
+
+    .login-card {
+      background: white;
+      width: 100%;
+      max-width: 420px;
+      padding: 30px 24px;
+      border-radius: 22px;
+      box-shadow: 0 15px 45px #0003;
+    }
+
+    .logo {
+      text-align: center;
+      font-size: 38px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 0;
+      color: #142c65;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #667085;
+      margin: 10px 0 26px;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 7px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ccd4e0;
+      border-radius: 10px;
+      font-size: 16px;
+      outline-color: #176bce;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      padding: 14px;
+      margin-top: 22px;
+      background: #176bce;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1054a8;
+    }
+
+    .notice {
+      background: #eef5ff;
+      color: #254b7a;
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+      margin-top: 18px;
+    }
+
+    #message {
+      font-size: 14px;
+      line-height: 1.5;
+      margin-top: 14px;
+      overflow-wrap: anywhere;
+    }
+
+    footer {
+      text-align: center;
+      color: #667085;
+      font-size: 12px;
+      margin-top: 22px;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="login-card">
+    <div class="logo">🎓</div>
+    <h1>Campus Dost</h1>
+    <p class="subtitle">Your campus. Your preparation. Your future.</p>
+
+    <form id="loginForm">
+      <label for="studentName">Student Name</label>
+      <input
+        id="studentName"
+        type="text"
+        placeholder="Enter your full name"
+        autocomplete="name"
+        required
+      >
+
+      <label for="email">Email Address</label>
+      <input
+        id="email"
+        type="email"
+        placeholder="Enter your email"
+        autocomplete="email"
+        required
+      >
+
+      <label for="phone">Phone Number</label>
+      <input
+        id="phone"
+        type="tel"
+        placeholder="Enter your phone number"
+        autocomplete="tel"
+        required
+      >
+
+      <button type="submit">Continue</button>
+      <p id="message" role="status"></p>
+    </form>
+
+    <div class="notice">
+      🔒 Your details should be handled securely.
+      Real OTP verification and account creation will
+      work after the secure backend is connected.
+    </div>
+
+    <footer>© 2026 Campus Dost</footer>
+  </main>
+
+  <script>
+    document.getElementById("loginForm").addEventListener(
+      "submit",
+      function(event) {
+        event.preventDefault();
+
+        const message = document.getElementById("message");
+
+        message.textContent =
+          "Login page is ready. Real OTP verification " +
+          "will be available after backend setup.";
+      }
+    );
+  </script>
+</body>
+</html>
